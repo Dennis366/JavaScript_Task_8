@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Flowers</title>
+    <link rel="stylesheet" href="testi.css">
+</head>
+
+<body>
+    <header>
+        <h1>Roses</h1>
+    </header>
+
+    
+    <div class="menus drpDwn">
+        <select id="roseSelect">
+            <option value="yellow">Yellow Rose</option>
+            <option value="pink">Pink Rose</option>
+            <option value="red">Red Rose</option>
+        </select>
+    </div>
+
+    
+    <div class="picture drpDwn">
+        <img class="drpDwn" id="imgPath" src="img/Rose-yellow.jpg">
+    </div>
+
+    
+    <ul class="drpDwn" id="noticeList"></ul>
+
+    
+    <script>
+        const select = document.getElementById("roseSelect");
+        const image = document.getElementById("imgPath");
+        const list = document.getElementById("noticeList");
+
+        
+        const roses = {
+            yellow: "img/Rose-yellow.jpg",
+            pink: "img/Rose-pink.jpg",
+            red: "img/Rose-red.jpg"
+        };
+
+        
+        select.addEventListener("change", function () {
+            image.src = roses[this.value];
+        });
+
+        
+        image.addEventListener("mouseover", function () {
+            image.style.transition = "transform 0.3s ease";
+            image.style.transform = "scale(1.4)";
+        });
+
+        
+        image.addEventListener("click", function () {
+            const li = document.createElement("li");
+            li.textContent = "You clicked the rose image!";
+            list.appendChild(li);
+        });
+
+        
+        image.addEventListener("mouseout", function () {
+            image.style.transform = "scale(1)";
+            list.innerHTML = "";
+        });
+    </script>
+
+</body>
+</html>
